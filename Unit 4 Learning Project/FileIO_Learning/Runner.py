@@ -25,5 +25,5 @@ class Writer:
 
 FileRead = FileRead("TestingFile.txt")
 # print("Something")
-print(f" There are {FileRead.get_total_number_of_lines()} lines in the file {FileRead.fileName}.")
+print(f" There are {FileRead.get_total_number_of_lines()} lines in the file {FileRead.fileName}.")  # Should be 7 lines.
 

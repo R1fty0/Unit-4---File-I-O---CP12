@@ -65,44 +65,27 @@ class FileRead:
                 i -= 1  # after removing an entry, we need to move back a step (the list is now 1 shorter)
         return data
 
-
-    # TODO
-    def get_total_number_of_lines(self):
+    def get_total_number_of_lines(self):   # Made by Mohit
         """ Returns the total number of lines of data in a file. """
         text = list()
         try:
-            with open(self.fileName, 'r') as file:   # 1. Open the file.
+            with open(self.fileName, 'r') as file:  # 1. Open the file.
+                print("Opening File")
                 file.readline()
-                while file:    # 2. Read the file Line by Line.
-                    text.append(file)
-                    file.readline()
+                while file:  # 2. Read the file Line by Line.
+                    print("Reading file")
+                    readText = file.readline()
+                    print("Text: " + str(readText))
+                    text.append(readText)
+
+                    print("Reading file pt. 2")
                     if not file:  # 3. Return the amount of lines
+                        print("Returning Result")
                         result = len(text)
                         return result
         except IOError:
             print("Error encountered, moving on")
             pass
-
-
-# TO-DO
-    def get_total_number_of_lines(self):
-        """ Returns the total number of lines of data in a file. """
-        text = list()
-        try:
-            with open(self.fileName, 'r') as file:  # 1. Open the file.
-                file.readline()
-                while file:  # 2. Read the file Line by Line.
-                    text.append(file)
-                    file.readline()
-                    if not file:  # Return result
-                        result = len(text)
-                        return result
-        except IOError:
-            print('Unable to read from file: ', self.fileName)
-            pass
-        # 3. Return the amount of lines
-        result = len(text)
-        return result
 
     def get_total_characters(self):
         """ Returns the total number of characters in a file. """
