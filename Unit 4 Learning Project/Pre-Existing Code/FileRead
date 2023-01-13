@@ -1,0 +1,56 @@
+class FileRead:
+
+    def __init__(self):
+        print('File reader created!')
+
+    def readFirstLineFromFile(self, filename):
+        ''' Print out the contents from the first line of a file '''
+        try:
+            with open(filename, 'r') as reader:
+                data = reader.readline()
+                print(data)
+        except IOError:
+            print('Unable to read from file: ', filename)
+
+    def readFileLineByLine(self, fileName):
+        ''' Prints out contents of the file line by line '''
+        with open(fileName, 'r') as reader:
+            line = reader.readline()
+            while line:  #loop as long as line is defined (stops after last line is read and returns null)
+                print(line)
+                line = reader.readline()  # update line with next line data
+
+
+    def getFileAllLines(self, fileName):
+        ''' Returns a list of file contents, 1 line per entry '''
+        data = list()
+
+        with open(fileName, 'r') as reader:
+            line = reader.readline()
+            while line:  #loop as long as line is defined (stops after last line is read and returns null)
+                data.append(line)  # add line to data
+                line = reader.readline()  # update line with next line data
+
+        return data     # return list containing all data after file reading complete
+
+
+    def getAllDataFromFile(self, fileName):
+        ''' Returns a String containing all data from file '''
+        try:
+            with open(fileName, 'r') as reader:
+                data = reader.read()
+                return data
+        except IOError:
+            print('Unable to read from file: ', fileName)
+
+
+
+    # Allows us to clean up a list of data to remove '\n' (newline) content from it
+    def removeNewlinesFromData(self, data):
+        ''' Returns a file with all \n (newline) content removed '''
+        for i in range(len(data)): #loop through all data
+            data[i] = data[i].replace("\n", "") #remove all references to new lines in data
+            if len(data[i]) == 0: #if there are now empty entries in the data, remove them!
+                data.remove(data[i])
+                i -= 1 #after removing an entry, we need to move back a step (the list is now 1 shorter)
+        return data
