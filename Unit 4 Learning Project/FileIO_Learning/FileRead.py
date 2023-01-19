@@ -9,6 +9,7 @@
 # readline() - returns one line of the file
 # readlines() = returns ALL lines in a list (1 line per entry)
 
+# MBM = Made by me (Mohit).
 
 class FileRead:
 
@@ -16,6 +17,9 @@ class FileRead:
         print('File reader created!')
         self.fileName = fileName
 
+    def change_file_name(self, newFileName =input("What is the name of the file?: ")):
+        self.fileName = newFileName
+        print(f"The new file being used is {self.fileName}")
     def readFirstLineFromFile(self, ):
         ''' Print out the contents from the first line of a file. '''
         try:
@@ -45,7 +49,6 @@ class FileRead:
 
         return data     # return list containing all data after file reading complete
 
-
     def getAllDataFromFile(self):
         ''' Returns a String containing all data from a file '''
         try:
@@ -65,8 +68,8 @@ class FileRead:
                 i -= 1  # after removing an entry, we need to move back a step (the list is now 1 shorter)
         return data
 
-    def get_total_number_of_lines(self):   # Made by Mohit
-        """ Returns the total number of lines of data in a file. """
+    def get_total_number_of_lines(self):   # MBM
+        """ Returns the total number of lines of data in a file. Currently not working"""
         text = list()
         try:
             with open(self.fileName, 'r') as file:  # 1. Open the file.
