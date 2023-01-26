@@ -14,7 +14,6 @@ from FileDecrypter import FileDecrypter
 
 
 class Writer:
-
     def writeToFile(self, fileName, stringData):
         try:
             with open(fileName, "w") as writer:
